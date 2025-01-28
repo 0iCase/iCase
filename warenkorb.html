@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Warenkorb - iCase</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <script>
+        let cart = [];
+        function addToCart(product, price) {
+            cart.push({ product, price });
+            updateCart();
+        }
+        function updateCart() {
+            let cartItems = document.getElementById("cart-items");
+            let cartTotal = document.getElementById("cart-total");
+            cartItems.innerHTML = "";
+            let total = 0;
+            cart.forEach(item => {
+                total += item.price;
+                cartItems.innerHTML += `<li>${item.product} - ${item.price.toFixed(2)}€</li>`;
+            });
+            cartTotal.innerText = total.toFixed(2) + "€";
+        }
+    </script>
+</head>
+<body>
+    <nav class="container-fluid">
+        <ul>
+            <li><a href="index.html">Startseite</a></li>
+            <li><a href="produkte.html">Produkte</a></li>
+            <li><a href="warenkorb.html">🛒 Warenkorb</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <h2>Dein Warenkorb</h2>
+        <ul id="cart-items">
+            <li>Dein Warenkorb ist leer.</li>
+        </ul>
+        <p><strong>Gesamt:</strong> <span id="cart-total">0€</span></p>
+        <a href="checkout.html" role="button">Zur Kasse</a>
+    </main>
+</body>
+</html>

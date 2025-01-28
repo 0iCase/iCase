@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Checkout - iCase</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body>
+    <nav class="container-fluid">
+        <ul>
+            <li><a href="index.html">Startseite</a></li>
+            <li><a href="produkte.html">Produkte</a></li>
+            <li><a href="warenkorb.html">🛒 Warenkorb</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <h2>Bezahlung</h2>
+        <form onsubmit="event.preventDefault(); alert('Zahlung erfolgreich!');">
+            <label for="name">Name auf Karte</label>
+            <input type="text" id="name" required>
+            
+            <label for="card">Kreditkartennummer</label>
+            <input type="text" id="card" required>
+            
+            <label for="exp">Ablaufdatum</label>
+            <input type="text" id="exp" required>
+            
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" required>
+            
+            <button type="submit">Jetzt bezahlen</button>
+        </form>
+    </main>
+</body>
+</html>
