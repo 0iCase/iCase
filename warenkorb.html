@@ -6,25 +6,31 @@
     <title>Warenkorb - iCase</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <script>
-        let cart = [];
-        function addToCart(product, price) {
-            cart.push({ product, price });
-            updateCart();
-        }
-        function updateCart() {
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
             let cartItems = document.getElementById("cart-items");
             let cartTotal = document.getElementById("cart-total");
             cartItems.innerHTML = "";
             let total = 0;
-            cart.forEach(item => {
-                total += item.price;
-                cartItems.innerHTML += `<li>${item.product} - ${item.price.toFixed(2)}€</li>`;
-            });
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = "<li>Dein Warenkorb ist leer.</li>";
+            } else {
+                cart.forEach(item => {
+                    total += item.price;
+                    cartItems.innerHTML += `<li>${item.product} - ${item.price.toFixed(2)}€</li>`;
+                });
+            }
             cartTotal.innerText = total.toFixed(2) + "€";
+        }
+
+        function clearCart() {
+            localStorage.removeItem("cart");
+            loadCart();
         }
     </script>
 </head>
-<body>
+<body onload="loadCart()">
     <nav class="container-fluid">
         <ul>
             <li><a href="index.html">Startseite</a></li>
@@ -34,11 +40,10 @@
     </nav>
     <main class="container">
         <h2>Dein Warenkorb</h2>
-        <ul id="cart-items">
-            <li>Dein Warenkorb ist leer.</li>
-        </ul>
+        <ul id="cart-items"></ul>
         <p><strong>Gesamt:</strong> <span id="cart-total">0€</span></p>
         <a href="checkout.html" role="button">Zur Kasse</a>
+        <button onclick="clearCart()">Warenkorb leeren</button>
     </main>
 </body>
 </html>

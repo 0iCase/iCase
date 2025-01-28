@@ -5,8 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Checkout - iCase</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <script>
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let cartItems = document.getElementById("cart-items");
+            let cartTotal = document.getElementById("cart-total");
+            cartItems.innerHTML = "";
+            let total = 0;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = "<li>Dein Warenkorb ist leer.</li>";
+            } else {
+                cart.forEach(item => {
+                    total += item.price;
+                    cartItems.innerHTML += `<li>${item.product} - ${item.price.toFixed(2)}€</li>`;
+                });
+            }
+            cartTotal.innerText = total.toFixed(2) + "€";
+        }
+
+        function completeOrder() {
+            alert("Vielen Dank für deine Bestellung!");
+            localStorage.removeItem("cart");
+            window.location.href = "index.html";
+        }
+    </script>
 </head>
-<body>
+<body onload="loadCart()">
     <nav class="container-fluid">
         <ul>
             <li><a href="index.html">Startseite</a></li>
@@ -15,22 +40,10 @@
         </ul>
     </nav>
     <main class="container">
-        <h2>Bezahlung</h2>
-        <form onsubmit="event.preventDefault(); alert('Zahlung erfolgreich!');">
-            <label for="name">Name auf Karte</label>
-            <input type="text" id="name" required>
-            
-            <label for="card">Kreditkartennummer</label>
-            <input type="text" id="card" required>
-            
-            <label for="exp">Ablaufdatum</label>
-            <input type="text" id="exp" required>
-            
-            <label for="cvv">CVV</label>
-            <input type="text" id="cvv" required>
-            
-            <button type="submit">Jetzt bezahlen</button>
-        </form>
+        <h2>Bestellung abschließen</h2>
+        <ul id="cart-items"></ul>
+        <p><strong>Gesamt:</strong> <span id="cart-total">0€</span></p>
+        <button onclick="completeOrder()">Jetzt bezahlen</button>
     </main>
 </body>
 </html>
