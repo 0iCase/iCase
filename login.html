@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login - iCase</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <script type="module">
+        import { auth, signUp, loginUser, logoutUser } from "./firebase-auth.js";
+
+        function handleSignup() {
+            let email = document.getElementById("signup-email").value;
+            let password = document.getElementById("signup-password").value;
+            signUp(email, password);
+        }
+
+        function handleLogin() {
+            let email = document.getElementById("login-email").value;
+            let password = document.getElementById("login-password").value;
+            loginUser(email, password);
+        }
+
+        function handleLogout() {
+            logoutUser();
+        }
+    </script>
+</head>
+<body>
+    <nav class="container-fluid">
+        <ul>
+            <li><a href="index.html">Startseite</a></li>
+            <li><a href="produkte.html">Produkte</a></li>
+            <li><a href="warenkorb.html">🛒 Warenkorb</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <h2>Registrieren</h2>
+        <form>
+            <input type="email" id="signup-email" placeholder="E-Mail eingeben" required>
+            <input type="password" id="signup-password" placeholder="Passwort" required>
+            <button type="button" onclick="handleSignup()">Registrieren</button>
+        </form>
+
+        <h2>Login</h2>
+        <form>
+            <input type="email" id="login-email" placeholder="E-Mail eingeben" required>
+            <input type="password" id="login-password" placeholder="Passwort" required>
+            <button type="button" onclick="handleLogin()">Login</button>
+        </form>
+
+        <button onclick="handleLogout()">Logout</button>
+    </main>
+</body>
+</html>
