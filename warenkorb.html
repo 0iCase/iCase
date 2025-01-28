@@ -16,12 +16,19 @@
             if (cart.length === 0) {
                 cartItems.innerHTML = "<li>Dein Warenkorb ist leer.</li>";
             } else {
-                cart.forEach(item => {
+                cart.forEach((item, index) => {
                     total += item.price;
-                    cartItems.innerHTML += `<li>${item.product} - ${item.price.toFixed(2)}€</li>`;
+                    cartItems.innerHTML += `<li>${item.product} - ${item.price.toFixed(2)}€ <button onclick="removeFromCart(${index})">❌</button></li>`;
                 });
             }
             cartTotal.innerText = total.toFixed(2) + "€";
+        }
+
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            loadCart();
         }
 
         function clearCart() {
