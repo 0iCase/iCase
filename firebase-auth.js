@@ -21,7 +21,7 @@ export function signUp(email, password) {
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             alert("Registrierung erfolgreich! Willkommen, " + userCredential.user.email);
-            window.location.href = "index.html";
+            window.location.href = "index.html"; // Weiterleitung zur Startseite
         })
         .catch((error) => {
             console.error(error);
@@ -34,7 +34,7 @@ export function loginUser(email, password) {
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             alert("Login erfolgreich! Willkommen zurück, " + userCredential.user.email);
-            window.location.href = "index.html";
+            window.location.href = "index.html"; // Weiterleitung zur Startseite
         })
         .catch((error) => {
             console.error(error);
@@ -42,12 +42,12 @@ export function loginUser(email, password) {
         });
 }
 
-// 🔹 Logout (Doppelte Definition entfernen!)
+// 🔹 Logout (Stelle sicher, dass es nur EINMAL existiert!)
 export function logoutUser() {
     signOut(auth)
         .then(() => {
             alert("Erfolgreich ausgeloggt!");
-            window.location.href = "login.html";
+            window.location.href = "login.html"; // Nach Logout zur Login-Seite
         })
         .catch((error) => {
             console.error(error);
