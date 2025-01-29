@@ -54,5 +54,3 @@ export function logoutUser() {
             alert("Fehler: " + error.message);
         });
 }
-
-// 🔹 Stelle sicher, dass nur eine Version der Funktion existiert!
