@@ -6,29 +6,32 @@
     <title>Login - iCase</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
 
-    <!-- Firebase Authentication korrekt importieren -->
+    <!-- Firebase Authentication -->
     <script type="module">
         import { signUp, loginUser, logoutUser } from "./firebase-auth.js";
 
-        // Funktionen global verfügbar machen
+        // Registrierung
         window.handleSignup = function () {
             let email = document.getElementById("signup-email").value;
             let password = document.getElementById("signup-password").value;
             signUp(email, password);
         };
 
+        // Login
         window.handleLogin = function () {
             let email = document.getElementById("login-email").value;
             let password = document.getElementById("login-password").value;
             loginUser(email, password);
         };
 
+        // Logout
         window.handleLogout = function () {
             logoutUser();
         };
     </script>
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="container-fluid">
         <ul>
             <li><a href="index.html">Startseite</a></li>
@@ -37,6 +40,7 @@
         </ul>
     </nav>
 
+    <!-- Hauptinhalt -->
     <main class="container">
         <h2>Registrieren</h2>
         <form>

@@ -1,4 +1,4 @@
-// Import Firebase-Module
+// Importiere Firebase-Module
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
@@ -12,11 +12,14 @@ const firebaseConfig = {
   appId: "1:638294554146:web:f6e778961da6ca0d107c7b"
 };
 
-// Firebase initialisieren
+// Initialisiere Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// 🔹 Registrierung
+// Exportiere die Auth-Funktionen
+export { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut };
+
+// Registrierungsfunktion
 export function signUp(email, password) {
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -29,7 +32,7 @@ export function signUp(email, password) {
         });
 }
 
-// 🔹 Login
+// Login-Funktion
 export function loginUser(email, password) {
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -42,7 +45,7 @@ export function loginUser(email, password) {
         });
 }
 
-// 🔹 Logout (Stelle sicher, dass es nur EINMAL existiert!)
+// Logout-Funktion
 export function logoutUser() {
     signOut(auth)
         .then(() => {
