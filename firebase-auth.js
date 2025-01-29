@@ -54,3 +54,22 @@ export function logoutUser() {
             alert("Fehler: " + error.message);
         });
 }
+
+// Diese Funktion wird von login.html aufgerufen
+function handleSignup() {
+    const email = document.getElementById("signup-email").value;
+    const password = document.getElementById("signup-password").value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            alert("Registrierung erfolgreich! Willkommen, " + userCredential.user.email);
+            window.location.href = "index.html"; // Nach erfolgreicher Anmeldung zur Startseite
+        })
+        .catch((error) => {
+            console.error(error);
+            alert("Fehler: " + error.message);
+        });
+}
+
+// Diese Zeile sorgt dafür, dass die Funktion global erreichbar ist
+window.handleSignup = handleSignup;
