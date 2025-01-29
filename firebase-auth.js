@@ -16,7 +16,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// 🔹 Registrierung
+// 🔹 Registrierung (Sign-Up)
 export function signUp(email, password) {
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -55,8 +55,8 @@ export function logoutUser() {
         });
 }
 
-// Diese Funktion wird von login.html aufgerufen
-function handleSignup() {
+// 🔹 Funktion für Registrierungs-Button (Muss vor dem Export definiert sein!)
+export function handleSignup() {
     const email = document.getElementById("signup-email").value;
     const password = document.getElementById("signup-password").value;
 
