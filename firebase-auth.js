@@ -16,12 +16,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// 🔹 Registrierung (Sign-Up)
+// 🔹 Registrierung
 export function signUp(email, password) {
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             alert("Registrierung erfolgreich! Willkommen, " + userCredential.user.email);
-            window.location.href = "index.html"; // Weiterleitung zur Startseite
+            window.location.href = "index.html";
         })
         .catch((error) => {
             console.error(error);
@@ -34,7 +34,7 @@ export function loginUser(email, password) {
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             alert("Login erfolgreich! Willkommen zurück, " + userCredential.user.email);
-            window.location.href = "index.html"; // Weiterleitung zur Startseite
+            window.location.href = "index.html";
         })
         .catch((error) => {
             console.error(error);
@@ -42,12 +42,12 @@ export function loginUser(email, password) {
         });
 }
 
-// 🔹 Logout
+// 🔹 Logout (Doppelte Definition entfernen!)
 export function logoutUser() {
     signOut(auth)
         .then(() => {
             alert("Erfolgreich ausgeloggt!");
-            window.location.href = "login.html"; // Nach Logout zur Login-Seite
+            window.location.href = "login.html";
         })
         .catch((error) => {
             console.error(error);
@@ -55,21 +55,4 @@ export function logoutUser() {
         });
 }
 
-// 🔹 Funktion für Registrierungs-Button (Muss vor dem Export definiert sein!)
-export function handleSignup() {
-    const email = document.getElementById("signup-email").value;
-    const password = document.getElementById("signup-password").value;
-
-    createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            alert("Registrierung erfolgreich! Willkommen, " + userCredential.user.email);
-            window.location.href = "index.html"; // Nach erfolgreicher Anmeldung zur Startseite
-        })
-        .catch((error) => {
-            console.error(error);
-            alert("Fehler: " + error.message);
-        });
-}
-
-// Diese Zeile sorgt dafür, dass die Funktion global erreichbar ist
-window.handleSignup = handleSignup;
+// 🔹 Stelle sicher, dass nur eine Version der Funktion existiert!
