@@ -2,31 +2,58 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>iCase - Luxus Handyhüllen</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iCase - Dein iPhone Zubehör</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav class="container-fluid">
-        <ul>
-            <li><strong>iCase</strong></li>
-        </ul>
-        <ul>
+    <header>
+        <div class="logo">
+            <h1>iCase</h1>
+        </div>
+        <nav>
+            <ul>
                 <li><a href="index.html">Startseite</a></li>
                 <li><a href="handyhuellen.html">Handyhüllen</a></li>
                 <li><a href="ladekabel.html">Ladekabel</a></li>
                 <li><a href="zubehoer.html">Zubehör</a></li>
                 <li><a href="warenkorb.html">🛒 Warenkorb (<span id="cart-count">0</span>)</a></li>
                 <li><a href="login.html">Anmelden</a></li>
-        </ul>
+            </ul>
+        </nav>
+    </header>
+    <main>
     </nav>
-    <main class="container">
-        <h2>Willkommen bei iCase - Luxus Handyhüllen</h2>
-        <p>Exklusive, hochwertige Handyhüllen für dein Smartphone.</p>
-        <a href="produkte.html" role="button">Jetzt einkaufen</a>
+    <main class="hero">
+        <h2>Willkommen bei iCase</h2>
+            <p>Entdecke hochwertiges Zubehör für dein iPhone. Praktisch, stilvoll, unverzichtbar.</p>
+        </section>
+        <section class="product-preview">
+            <h2>Bestseller</h2>
+            <div class="product-list">
+                <div class="product">
+                    <img src="images/transparent.jpg" alt="Transparente Handyhülle">
+                    <h3>Transparente Handyhülle</h3>
+                    <p class="price">€19,99</p>
+                    <a href="produkt.html" class="details-button">Details</a>
+                </div>
+                <div class="product">
+                    <img src="images/lightning.jpeg" alt="Lightning Kabel - 2m">
+                    <h3>Lightning Kabel - 2m</h3>
+                    <p class="price">€12,99</p>
+                    <a href="produkt.html" class="details-button">Details</a>
+                </div>
+                <div class="product">
+                    <img src="images/powerbank.jpeg" alt="MagSafe Powerbank">
+                    <h3>MagSafe Powerbank</h3>
+                    <p class="price">€49,99</p>
+                    <a href="produkt.html" class="details-button">Details</a>
+                </div>
+            </div>
+        </section>
     </main>
-    <footer class="container">
-        <small><a href="#">AGB</a> • <a href="#">Datenschutz</a></small>
+    <footer>
+        <p>&copy; 2025 iCase. Alle Rechte vorbehalten.</p>
     </footer>
 </body>
 </html>
